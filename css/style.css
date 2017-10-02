@@ -25,3 +25,6 @@ h2, h3, .info {
 .password {
     padding-left: 10px;
 }
+.error, .response {
+    color: #d11950;
+}
