@@ -4,21 +4,21 @@ const express = require('express'),
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-app.use('/store', (req, res, next) => {
-    console.log('Jestem pośrednikiem przy żądaniu do /store');
-    next();
-});
-
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.render('content');
 });
 
-app.get('/store', (req, res) => {
-    res.send('To jest sklep');
-});
-
-app.get('/first-view', (req, res) => {
-    res.render('first-view');
+app.get('/auth/google', (req, res) => {
+    if (req.query.password === 'filmweb') {
+        res.render('auth', {
+            url: 'http://www.filmweb.pl/'
+        });
+    } else {
+        res.render('error', {
+            info: 'Nieprawidłowe dane wejściowe.',
+            url: 'http://localhost:3000/'
+        });
+    }
 });
 
 app.listen(3000);
