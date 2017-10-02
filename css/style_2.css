@@ -1,0 +1,6 @@
+body {
+    background-color: lightblue;
+}
+.error, .response {
+    color: #d11950;
+}
